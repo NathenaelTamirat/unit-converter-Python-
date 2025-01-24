@@ -1,6 +1,7 @@
 import sys
 
 # Dictionary of conversion factors
+# Dictionary for length
 conversion_dict = {
     'length': {
         'meters': 1,
@@ -14,6 +15,7 @@ conversion_dict = {
         'feet': 3.28084,
         'inches': 39.3701
     },
+    # Dictionary for mass
     'mass': {
         'grams': 1,
         'kilograms': 0.001,
@@ -22,11 +24,13 @@ conversion_dict = {
         'pounds': 0.00220462,
         'ounces': 0.035274
     },
+    # Dictionary for tempreature
     'temperature': {
         'celsius': ('C', 'K', lambda x: x + 273.15, lambda x: x - 273.15),
         'fahrenheit': ('F', 'K', lambda x: (x - 32) * 5/9 + 273.15, lambda x: (x - 32) * 5/9),
         'kelvin': ('K', 'C', lambda x: x - 273.15, lambda x: x)
     },
+    # Dictionary for volume
     'volume': {
         'liters': 1,
         'milliliters': 1000,
@@ -37,6 +41,7 @@ conversion_dict = {
         'cups': 4.22675,
         'fluid_ounces': 33.814
     },
+    # Dictionary for time
     'time': {
         'seconds': 1,
         'minutes': 1/60,
@@ -48,6 +53,7 @@ conversion_dict = {
     }
 }
 
+# display main menu by creating custom made functions
 def show_menu():
     """Display the main menu."""
     print("\nWelcome to the Nathenael Tamirat's Unit Converter project assingment!")
@@ -59,6 +65,7 @@ def show_menu():
     print("5. Time")
     print("6. Exit")
 
+# Cumstom made fault handling function
 def convert_units(category):
     """Handle unit conversion based on selected category."""
     if category not in conversion_dict:
@@ -84,6 +91,7 @@ def convert_units(category):
     converted_value = convert_value(value, from_unit, to_unit, category)
 
     print(f"\n{value} {from_unit} is equal to {converted_value} {to_unit}.\n")
+
 
 def convert_value(value, from_unit, to_unit, category):
     """Convert the given value between units."""
